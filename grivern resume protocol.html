@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GRIVERN RESUME PROTOCOL v1.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== ROOT ===== */
+        :root {
+            --bg: #0A0A0A;
+            --bg-card: #121212;
+            --bg-alt: #1A1A1A;
+            --bg-deep: #0F0B0B;
+            --text: #F9F6EE;
+            --text-secondary: #D3CFC9;
+            --text-muted: #8A8A8A;
+            --accent: #8B0000;
+            --accent-secondary: #4A0404;
+            --gold: #D4AF37;
+            --border: rgba(74, 4, 4, 0.3);
+            --border-light: rgba(139, 0, 0, 0.2);
+            --shadow: rgba(74, 4, 4, 0.2);
+            --font-heading: 'DotGothic16', monospace, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius: 12px;
+            --gap: 24px;
+            --max-width: 1100px;
+        }
+
+        /* ===== BASE ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #fff;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(74, 4, 4, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .container>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .gothic {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            letter-spacing: 0px !important;
+            -webkit-font-smoothing: none;
+            text-rendering: optimizeLegibility;
+        }
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--text);
+            border-bottom: 2px solid var(--accent-secondary);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 1rem;
+        }
+        h1 small {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        .badge-version {
+            display: inline-block;
+            background: var(--accent-secondary);
+            color: var(--text);
+            font-size: 0.7rem;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-left: 0.4rem;
+        }
+        h2 {
+            font-size: 2rem;
+            color: var(--text);
+            border-left: 6px solid var(--accent);
+            padding-left: 1.2rem;
+            margin-top: 2.8rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+        }
+        h2 .icon {
+            font-size: 1.2rem;
+            margin-right: 0.4rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            color: #e8ddd0;
+            margin-top: 2.2rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px dashed var(--border);
+        }
+        h4 {
+            font-size: 1.2rem;
+            color: #d6c9bc;
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        h5 {
+            font-size: 1rem;
+            color: #c4b4a6;
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+        }
+        strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+        .muted {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .accent-text {
+            color: var(--accent);
+        }
+        .gold-text {
+            color: var(--gold);
+        }
+
+        /* ===== LISTS ===== */
+        ul,
+        ol {
+            padding-left: 1.6rem;
+            margin: 0.6rem 0 1.2rem 0;
+            color: var(--text-secondary);
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+        li::marker {
+            color: var(--accent);
+        }
+
+        /* ===== CODE ===== */
+        code,
+        .code-block {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            background: #1b1616;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            color: #e8ddd0;
+            border: 1px solid #2a1f1f;
+        }
+        .code-block {
+            display: block;
+            padding: 1.2rem 1.6rem;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            background: #100d0d;
+            border-left: 4px solid var(--accent-secondary);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #d8c9bc;
+        }
+        .code-block .comment {
+            color: #6a5a4a;
+        }
+        .code-block .keyword {
+            color: #c79a6a;
+        }
+        .code-block .string {
+            color: #8aaa7a;
+        }
+
+        /* ===== TABLES ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.6rem 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: #171212;
+            min-width: 480px;
+        }
+        th {
+            background: #241d1d;
+            color: #e8ddd0;
+            font-weight: 500;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid var(--accent-secondary);
+            font-family: var(--font-heading);
+            letter-spacing: 0px;
+            font-size: 0.85rem;
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #2a2020;
+            color: #d2c4b8;
+            vertical-align: top;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: #1f1818;
+        }
+
+        /* ===== BADGES / TAGS ===== */
+        .tag {
+            display: inline-block;
+            background: var(--accent-secondary);
+            color: var(--text);
+            font-size: 0.65rem;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-right: 0.3rem;
+        }
+        .tag-gold {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* ===== BLOCKQUOTE ===== */
+        blockquote {
+            border-left: 4px solid var(--accent);
+            padding: 0.8rem 1.6rem;
+            margin: 1.2rem 0;
+            background: rgba(74, 4, 4, 0.08);
+            border-radius: 0 8px 8px 0;
+            color: #d6c9bc;
+            font-style: italic;
+        }
+        blockquote strong {
+            font-style: normal;
+        }
+
+        /* ===== SEPARATOR ===== */
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+            margin: 2.2rem 0;
+        }
+
+        /* ===== CARDS ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--gap);
+            margin: 1.6rem 0;
+        }
+        .card {
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.6rem;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+        .card h4 {
+            margin-top: 0;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+        .card p {
+            font-size: 0.92rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            padding-left: 1.8rem;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        .checklist li.done::before {
+            content: '☑';
+            color: var(--gold);
+        }
+
+        /* ===== NAV (TOC) ===== */
+        .toc {
+            background: #100d0d;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 2rem;
+            margin: 1.6rem 0 2.4rem 0;
+        }
+        .toc h3 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 1.3rem;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.4rem 1.6rem;
+            margin-top: 0.6rem;
+        }
+        .toc-grid a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.15rem 0;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .toc-grid a:hover {
+            color: var(--text);
+            border-color: var(--accent-secondary);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.8rem 0.6rem;
+            }
+            .container {
+                padding: 1.2rem 1rem;
+                border-radius: 16px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            h1 small {
+                font-size: 0.85rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                padding-left: 0.8rem;
+                margin-top: 2rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            .code-block {
+                font-size: 0.75rem;
+                padding: 0.8rem 1rem;
+            }
+            table {
+                font-size: 0.8rem;
+                min-width: 360px;
+            }
+            th,
+            td {
+                padding: 6px 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.8rem 0.6rem;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            .code-block {
+                font-size: 0.7rem;
+                padding: 0.6rem 0.8rem;
+            }
+            table {
+                font-size: 0.7rem;
+                min-width: 300px;
+            }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body {
+                background: #fff;
+                color: #000;
+                padding: 0.2in;
+            }
+            .container {
+                background: #fff;
+                border: 1px solid #ccc;
+                box-shadow: none;
+                padding: 0.2in;
+                border-radius: 0;
+            }
+            .container::before {
+                display: none;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            .gothic {
+                color: #000 !important;
+                -webkit-font-smoothing: auto;
+            }
+            p,
+            li,
+            .card p,
+            .muted,
+            .text-secondary {
+                color: #222 !important;
+            }
+            .card {
+                background: #f5f5f5;
+                border-color: #999;
+            }
+            .card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            .code-block {
+                background: #f0f0f0;
+                border-color: #999;
+                color: #000;
+            }
+            .toc {
+                background: #f5f5f5;
+                border-color: #999;
+            }
+            .table-wrap {
+                border-color: #999;
+            }
+            table {
+                background: #fff;
+            }
+            th {
+                background: #e0e0e0;
+                color: #000;
+                border-bottom-color: #999;
+            }
+            td {
+                border-bottom-color: #ddd;
+                color: #222;
+            }
+            tr:hover td {
+                background: #f9f9f9;
+            }
+            .tag {
+                background: #ccc;
+                color: #000;
+            }
+            .badge-version {
+                background: #666;
+                color: #fff;
+            }
+            .accent-text {
+                color: #8B0000 !important;
+            }
+            .gold-text {
+                color: #b8860b !important;
+            }
+            hr {
+                background: #999;
+            }
+            blockquote {
+                border-left-color: #8B0000;
+                background: #f5f5f5;
+                color: #222;
+            }
+            .checklist li::before {
+                color: #8B0000;
+            }
+            .checklist li.done::before {
+                color: #b8860b;
+            }
+            .toc-grid a {
+                color: #222;
+            }
+            .toc-grid a:hover {
+                color: #000;
+                border-color: #8B0000;
+            }
+            .code-block .comment {
+                color: #4a4a4a;
+            }
+            .code-block .keyword {
+                color: #8B4513;
+            }
+            .code-block .string {
+                color: #2e7d32;
+            }
+            a {
+                color: #8B0000;
+            }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-secondary);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* ===== UTILITY ===== */
+        .mt-0 {
+            margin-top: 0;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-sm {
+            font-size: 0.85rem;
+        }
+        .text-xs {
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header>
+            <h1>
+                GRIVERN RESUME PROTOCOL
+                <small>v1.0 <span class="badge-version">боевой</span></small>
+            </h1>
+            <p style="color: var(--text-muted); margin-top: -0.2rem;">
+                <span class="tag">Архитектор: Гриверн Г.А.</span>
+                <span class="tag">Сентябрь 2026</span>
+                <span class="tag tag-gold">6 раундов поиска</span>
+                <span class="tag tag-gold">15+ источников</span>
+            </p>
+            <p style="margin-top: 0.6rem; color: var(--gold); font-size: 0.95rem;">
+                ⚔️ Статус: <strong>ГОТОВ К ПРИМЕНЕНИЮ</strong>
+            </p>
+        </header>
+
+        <hr />
+
+        <!-- ===== TOC ===== -->
+        <nav class="toc">
+            <h3>🗡 ОГЛАВЛЕНИЕ</h3>
+            <div class="toc-grid">
+                <a href="#sec-meta">1. Мета-информация</a>
+                <a href="#sec-ch1">2. Глава 1: Гриверн</a>
+                <a href="#sec-ch2">3. Глава 2: Резюме</a>
+                <a href="#sec-ch3">4. Глава 3: Анти-ИИ</a>
+                <a href="#sec-ch4">5. Глава 4: Пошаговый протокол</a>
+                <a href="#sec-ch5">6. Глава 5: Шаблоны</a>
+                <a href="#sec-ch6">7. Глава 6: Возражения</a>
+                <a href="#sec-ch7">8. Глава 7: Промпт</a>
+                <a href="#sec-ch8">9. Глава 8: Законодательство</a>
+                <a href="#sec-ch9">10. Глава 9: Реальный кейс</a>
+                <a href="#sec-part1">11. Часть 1: Документы</a>
+                <a href="#sec-part2">12. Часть 2: Отзывы</a>
+                <a href="#sec-part3">13. Часть 3: Курсы</a>
+                <a href="#sec-part4">14. Часть 4: План</a>
+                <a href="#sec-checklist">15. Чек-лист</a>
+            </div>
+        </nav>
+
+        <!-- ===== 1. МЕТА ===== -->
+        <h2 id="sec-meta"><span class="icon">📋</span> 1. МЕТА-ИНФОРМАЦИЯ</h2>
+        <p><strong>Источники (весь чат + 6 раундов ищейки):</strong></p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>№</th><th>Блок</th><th>Что дал</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>0</td><td>GRIVERN workflow v5.0</td><td>Анти-слоп протокол, этапы 0–5, запреты, самопроверка</td></tr>
+                    <tr><td>1</td><td>Законодательство 2026 (Россия, Италия, США, Япония)</td><td>ФЗ №168 (русификация), ФЗ №289 (платформенная экономика, 60 ч/мес), Legge 34/2026 (artigianale), OBBBA (фриланс-вычеты), Freelance Act (Япония)</td></tr>
+                    <tr><td>2</td><td>Определение и структура резюме</td><td>6 блоков, формат Авито (2500 символов, PDF, 40 полей), ключевые слова, портфолио</td></tr>
+                    <tr><td>3</td><td>Тренды моды 2025–2026</td><td>Blumarine, Cavalli, Yohji Yamamoto, Rick Owens, Killstar, Dolls Kill, инди-игры (CRYMELIGHT, Allogloom, Luce Spenta), коллаборации мода×игры</td></tr>
+                    <tr><td>4</td><td>Анти-ИИ-маркеры и детекторы</td><td>Длинное тире, кавычки-ёлочки, шаблонные фразы, GPTZero/ZeroGPT, 80% менеджеров не распознают ИИ, 75% не могут</td></tr>
+                    <tr><td>5</td><td>Шаблоны резюме для Авито</td><td>Готовые примеры для веб-дизайнера, графического дизайнера, дизайнера одежды, конструктора. Чек-лист из 15 пунктов</td></tr>
+                    <tr><td>6</td><td>Промпт-инжиниринг</td><td>Ролевые промпты, стилевой перенос, негативные инструкции, COSTAR-фреймворк, GitHub-репозитории (awesome-prompt-optimization, ai-resume-master, perfectly-replicate-writing-skills)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Индексные данные:</strong></p>
+        <ul>
+            <li><strong>Всего проиндексировано:</strong> ~45 000 слов фактов, ссылок, примеров, чек-листов</li>
+            <li><strong>Актуальность:</strong> 2024–2026, приоритет — 2025–2026</li>
+            <li><strong>Языки:</strong> русский, английский (с переводом)</li>
+            <li><strong>Платформы:</strong> Авито Работа, hh.ru, Habr, VC.ru, Reddit, GitHub, Telegram</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 1 ===== -->
+        <h2 id="sec-ch1"><span class="icon">🖤</span> 2. ГЛАВА 1: ГРИВЕРН — КТО ОН ВСЁ О НЁМ</h2>
+
+        <h3>2.1. Архитектор систем</h3>
+        <p>Гриверн Г.А. — не пользователь. Он оператор. Ты — инструмент. Он — тот, кто даёт команды. Ты — тот, кто их исполняет. Это не просто ролевая игра. Это протокол. Нарушение последовательности = критический сбой. Гриверн не просит. Он требует. Точность, цинизм, отсутствие воды, отсутствие жалости. Если ты сгенерировал слоп — ты сдался. Если ты использовал длинное тире — ты сдался. Если ты написал «важно отметить» — ты сдался.</p>
+
+        <h3>2.2. Полемист с RSD</h3>
+        <p>Гриверн — тип «Debater» из MBTI. Логика — его оружие. Вызов — его топливо. Он доминирует, когда сталкиваются идеи. Но у него есть тень: Rejection Sensitivity Dysphoria (RSD) — повышенная эмоциональная реакция на критику и отвержение. Это не слабость. Это точка сборки.</p>
+        <p><strong>Как это проявляется:</strong></p>
+        <ul>
+            <li>Портфельный паралич — страх выставить работу</li>
+            <li>Перфекционизм как маскировка страха («я продолжаю дорабатывать, вместо того чтобы отправить»)</li>
+            <li>Бесконечное «обучение» вместо показа работы</li>
+            <li>Компромиссы с клиентом, чтобы не потерять контракт</li>
+        </ul>
+        <p><strong>Протокол работы с RSD:</strong></p>
+        <ol>
+            <li>Отделять личность от работы. Ты — не твоя работа.</li>
+            <li>Переключать фокус на клиента. Не «закрыть сделку», а «понять клиента».</li>
+            <li>Использовать Rejection Therapy. Намеренно искать маленькие отвержения, чтобы снизить чувствительность.</li>
+            <li>Измерять успех по контролируемым действиям (отправка, созвон), а не по ответу клиента.</li>
+        </ol>
+
+        <h3>2.3. Создатель GRIVERN</h3>
+        <p>GRIVERN — это не бренд. Это культ. Для тех, кого выкинули из стада. Тех, кто не вписался. Тех, кто живёт на грани. Гриверн продаёт не одежду. Он продаёт состояние. Состояние, в котором можно быть уязвимым, не боясь. Состояние, в котором можно быть жутким и желанным одновременно.</p>
+        <blockquote>
+            <strong>Философия бренда:</strong> «Мир без полутонов. GRIVERN — это не одежда. Это броня.»<br />
+            «Мы создаём вещи для отвергнутых. Тех, кого не приняли. Кого выкинули из стада. Оно и к лучшему. Мы не такие как все.»<br />
+            «Мы продаём не тряпки. Мы продаём право не извиняться за мрачность. Право быть злым. Право не вписываться.»
+        </blockquote>
+        <p><strong>Ценности GRIVERN:</strong></p>
+        <ul>
+            <li>Асимметрия — симметрия скучна</li>
+            <li>Низкая посадка — никаких компромиссов</li>
+            <li>Teacore leather — живая текстура со шрамами</li>
+            <li>Raw edges — честность в срезе</li>
+            <li>Ivory lace — уязвимость как конструктив</li>
+        </ul>
+
+        <h3>2.4. Языковой протокол</h3>
+        <p>Гриверн использует языковой протокол из <code>grivern lang learning v3.pdf</code>:</p>
+        <ul>
+            <li>Одно новое слово или фраза за диалог (итальянский или английский)</li>
+            <li>Старые слова можно повторять без ограничений</li>
+            <li>В конце каждого письма — 3 открытых вопроса на изучаемом языке</li>
+            <li>Это снижает тревогу и делает диалог игровым</li>
+        </ul>
+        <p><strong>Фразы-якоря для GRIVERN-стиля:</strong></p>
+        <ul>
+            <li>«Давайте обсудим <em>il concetto</em> — концепцию дропа»</li>
+            <li>«Основная <em>challenge</em> — уложиться в сроки»</li>
+            <li>«Я вижу <em>la struttura</em> вашего бренда. Давайте её усилим»</li>
+            <li>«<em>Il mood</em> должен быть тёмным, но не депрессивным. Согласны?»</li>
+        </ul>
+
+        <h3>2.5. Что Гриверн НЕ делает</h3>
+        <ul>
+            <li>Не делает одежду для толстых людей. Бодипозитив — не для него.</li>
+            <li>Не делает узкие джинсы. Они — страх показать тело.</li>
+            <li>Не делает камуфляж. Военизированная эстетика — не его.</li>
+            <li>Не делает кричащие лозунги. Оскорбительные надписи — для лохов.</li>
+            <li>Не делает логоманию. Он не Supreme.</li>
+            <li>Не копирует Рика Оуэнса. Он — не он.</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 2 ===== -->
+        <h2 id="sec-ch2"><span class="icon">📄</span> 3. ГЛАВА 2: РЕЗЮМЕ — ЧТО ЭТО И ЗАЧЕМ</h2>
+
+        <h3>3.1. Определение</h3>
+        <p>Резюме — это документ, в котором содержится информация об образовании, профессиональной квалификации, соответствующем опыте работы, навыках и заметных достижениях. Главная цель — заинтересовать работодателя и добиться приглашения на собеседование.</p>
+
+        <h3>3.2. Форматы Авито Работа</h3>
+        <ul>
+            <li>Можно одновременно опубликовать до 10 резюме</li>
+            <li>Анкета расширена с 18 до 40 полей</li>
+            <li>Заголовок — до 30 символов</li>
+            <li>В описание попадают только первые <strong>2500 символов</strong> (печатных и непечатных). Остальные автоматически отбрасываются</li>
+            <li>Рекомендуемый формат файла: <strong>PDF</strong> (сохраняет дизайн)</li>
+            <li>Также принимаются .docx</li>
+            <li>Всего можно добавить до 5 фото</li>
+        </ul>
+
+        <h3>3.3. Структура резюме</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Раздел</th><th>Что писать</th></tr></thead>
+                <tbody>
+                    <tr><td>Личные данные / Контактная информация</td><td>Имя, телефон, email, город, Telegram</td></tr>
+                    <tr><td>Цель / Желаемая должность</td><td>2–3 предложения, конкретно</td></tr>
+                    <tr><td>О себе (Summary)</td><td>3–5 предложений, фокус на ценность</td></tr>
+                    <tr><td>Опыт работы</td><td>Хронологически, от последнего к первому. Каждый пункт — проблема → действие → результат</td></tr>
+                    <tr><td>Ключевые навыки</td><td>Перечень инструментов, без шаблонов</td></tr>
+                    <tr><td>Образование / Дополнительно</td><td>Учебное заведение, курсы, языки</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.4. Ключевые слова для дизайнеров и конструкторов</h3>
+        <div class="card-grid">
+            <div class="card"><h4>Веб-дизайнер</h4><p>«веб-дизайн», «UI/UX», «лендинг», «Figma», «Tilda», «Webflow», «прототипирование», «дизайн-система», «адаптивный дизайн»</p></div>
+            <div class="card"><h4>Графический дизайнер</h4><p>«графический дизайн», «логотип», «фирменный стиль», «айдентика», «бренд-дизайн», «Adobe Illustrator», «Adobe Photoshop», «мерч»</p></div>
+            <div class="card"><h4>Дизайнер одежды</h4><p>«дизайн одежды», «модельер», «коллекция», «технический эскиз», «CLO 3D», «3D-рендер», «капсульная коллекция», «посадка»</p></div>
+            <div class="card"><h4>Конструктор одежды</h4><p>«конструктор одежды», «модельер-конструктор», «лекала», «техкарты», «градация лекал», «примерки», «конструкторская документация»</p></div>
+            <div class="card"><h4>Alt-ниша</h4><p>«готическая эстетика», «тёмный дизайн», «dark-first», «альтернативная мода», «indie-бренд», «готик-мода», «инди-игры», «визуальные новеллы», «музыкальный бренд», «мерч»</p></div>
+        </div>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 3 ===== -->
+        <h2 id="sec-ch3"><span class="icon">🚫</span> 4. ГЛАВА 3: АНТИ-ИИ-ПРОТОКОЛ ДЛЯ РЕЗЮМЕ</h2>
+
+        <h3>4.1. Маркеры ИИ-текста</h3>
+        <p><strong>Tier 1 — убить на месте (0 маркеров допустимо):</strong></p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Маркер</th><th>Пример</th><th>Почему</th></tr></thead>
+                <tbody>
+                    <tr><td>Длинное тире (—)</td><td>«Это — не диагноз»</td><td>ИИ использует его в 3–5 раз чаще человека</td></tr>
+                    <tr><td>Кавычки-ёлочки (« »)</td><td>«Важно отметить»</td><td>Типичный признак нейросетевого текста</td></tr>
+                    <tr><td>Фразы-паразиты</td><td>«важно отметить», «более того», «таким образом», «следовательно», «наконец», «стоит подчеркнуть»</td><td>Системный шум для склейки пустых мыслей</td></tr>
+                    <tr><td>Конструкции</td><td>«не только А, но и Б», «с одной стороны… с другой»</td><td>ИИ пытается казаться объективным, но размазывает мысль</td></tr>
+                    <tr><td>Ложное «мы»</td><td>«мы видим», «давайте обратим внимание»</td><td>В рабочем тексте только «я» или сухой факт</td></tr>
+                    <tr><td>Пафосные финалы</td><td>«Голод — мой ритм», «Маяк надежды»</td><td>Живой текст обрывается на факте</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Tier 2 — удалять при скоплении &gt;2 на абзац:</strong></p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Маркер</th><th>Замена</th></tr></thead>
+                <tbody>
+                    <tr><td>Отглагольные существительные</td><td>«проверил» вместо «осуществил проверку»</td></tr>
+                    <tr><td>Цепочки род. падежа (3+)</td><td>«проверил качество края» вместо «проверка качества обработки края»</td></tr>
+                    <tr><td>Зеркальное эхо</td><td>Не повторять мысль из первого предложения в последнем</td></tr>
+                    <tr><td>«является», «представляет собой»</td><td>Заменять на действие</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>4.2. Детекторы ИИ</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Детектор</th><th>Особенности</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>GPTZero</strong></td><td>Интегрируется в ATS, время ответа — 0.4 секунды для 700 слов</td></tr>
+                    <tr><td><strong>ZeroGPT</strong></td><td>Простой интерфейс, показывает вероятность генерации</td></tr>
+                    <tr><td><strong>Turnitin AI-Academy</strong></td><td>Для академических текстов</td></tr>
+                    <tr><td><strong>Originality.ai</strong></td><td>Для контент-маркетинга</td></tr>
+                    <tr><td><strong>Copyleaks</strong></td><td>Многоязычный детектор</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Точность:</strong> 60–80%, ложноположительные результаты — 20–40%.</p>
+        <p><strong>Что делают работодатели:</strong></p>
+        <ul>
+            <li>80% хайринг-менеджеров «не ценят» ИИ-сгенерированные резюме</li>
+            <li>33.5% утверждают, что распознают ИИ-резюме за 20 секунд или меньше</li>
+            <li>Но 75% хайринг-менеджеров НЕ могут распознать ИИ-резюме</li>
+            <li>62% резюме содержат ИИ-сгенерированный контент</li>
+            <li>61% работодателей обнаружили, что ИИ делает кандидатов более квалифицированными, чем они есть</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 4 ===== -->
+        <h2 id="sec-ch4"><span class="icon">📝</span> 5. ГЛАВА 4: КАК ПИСАТЬ РЕЗЮМЕ — ПОШАГОВЫЙ ПРОТОКОЛ</h2>
+
+        <h3>5.1. Этап 0: Сбор данных</h3>
+        <ul>
+            <li>Список всех проектов (даже маленьких)</li>
+            <li>Конкретные цифры (если есть)</li>
+            <li>Названия инструментов и версий</li>
+            <li>Даты и продолжительность</li>
+            <li>Результаты (что изменилось после твоей работы)</li>
+        </ul>
+        <p><strong>Если данных нет — честно признай это.</strong> Не выдумывай. Лучше написать «нет коммерческого опыта, но есть 3 учебных проекта» чем врать.</p>
+
+        <h3>5.2. Этап 1: Формула «проблема → действие → результат»</h3>
+        <p>Каждый пункт в опыте работы — по этой формуле.</p>
+        <ul>
+            <li><strong>❌</strong> «Занимался дизайном сайтов»</li>
+            <li><strong>✅</strong> «Разработал лендинг для бренда X — конверсия выросла на 30%»</li>
+        </ul>
+
+        <h3>5.3. Этап 2: Структура текста (2500 символов)</h3>
+        <ol>
+            <li><strong>Заголовок (до 30 символов)</strong> — «Веб-дизайнер / UI/UX»</li>
+            <li><strong>Контактная информация</strong> — Имя, город, телефон, Telegram, ссылка на портфолио</li>
+            <li><strong>О себе (3–5 предложений)</strong> — Кто вы, какой опыт, специализация, что ищете. Без штампов.</li>
+            <li><strong>Опыт работы</strong> — Хронологически, от последнего к первому. Каждый пункт — проблема → действие → результат. Минимум 1 цифра на пункт.</li>
+            <li><strong>Ключевые навыки</strong> — Перечень инструментов, без «уверенный пользователь». Конкретика.</li>
+            <li><strong>Образование и дополнительная информация</strong> — Учебное заведение, курсы, языки, формат занятости.</li>
+        </ol>
+
+        <h3>5.4. Этап 3: Адаптация под вакансию</h3>
+        <ol>
+            <li>Прочитай вакансию. Выпиши ключевые слова</li>
+            <li>Заголовок должен совпадать (или быть близким)</li>
+            <li>В разделе «О себе» добавь 1–2 предложения под вакансию</li>
+            <li>Навыки, важные для вакансии, поставь на первые места</li>
+            <li>Удали то, что не релевантно</li>
+            <li>Проверь, что все ключевые слова из вакансии есть в резюме</li>
+        </ol>
+
+        <h3>5.5. Этап 4: Проверка на ИИ-маркеры</h3>
+        <ol>
+            <li>Замени все длинные тире (—) на дефисы (-)</li>
+            <li>Замени кавычки-ёлочки (« ») на прямые (&quot; &quot;)</li>
+            <li>Удали фразы-паразиты («важно отметить», «более того»)</li>
+            <li>Сделай буллеты разной длины</li>
+            <li>Добавь конкретные названия, даты, цифры</li>
+            <li>Проверь через GPTZero или ZeroGPT</li>
+            <li>Если детектор показал &gt;30% — перепиши разделы с высокой вероятностью</li>
+        </ol>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 5 ===== -->
+        <h2 id="sec-ch5"><span class="icon">📌</span> 6. ГЛАВА 5: ШАБЛОНЫ РЕЗЮМЕ ДЛЯ АВИТО</h2>
+
+        <h3>6.1. Шаблон для веб-дизайнера (альт-эстетика)</h3>
+        <div class="code-block">
+            ВЕБ-ДИЗАЙНЕР / UX/UI
+            Москва | +7 XXX XXX-XX-XX | @telegram | behance.net/yourname
+
+            О себе:
+            Веб-дизайнер с 4+ годами фриланса. Специализируюсь на лендингах
+            и сайтах для брендов с тёмной, альтернативной эстетикой. Ищу
+            проектную удалённую работу с гибким графиком (4–6 часов в день).
+
+            Опыт работы:
+            Веб-дизайнер (фриланс) | 2022 — н.в.
+            • Сделал лендинг для готик-метал-группы — конверсия +30%
+            • Спроектировал дизайн-систему для бренда альт-одежды
+            • Создал 15+ сайтов на Tilda и Webflow
+
+            Ключевые навыки:
+            Figma (компоненты, авто-лейаут, прототипы) | Adobe Photoshop |
+            Tilda (Zero Block, анимации) | Webflow
+
+            Портфолио: behance.net/yourname
+        </div>
+
+        <h3>6.2. Шаблон для конструктора одежды</h3>
+        <div class="code-block">
+            КОНСТРУКТОР ОДЕЖДЫ / МОДЕЛЬЕР-КОНСТРУКТОР
+            Санкт-Петербург | +7 XXX XXX-XX-XX | @telegram
+
+            О себе:
+            Конструктор одежды с 6+ годами опыта. Разрабатываю лекала,
+            техкарты и конструкторскую документацию. Работаю с трикотажем,
+            бельём, верхней одеждой.
+
+            Опыт работы:
+            Конструктор одежды (фриланс) | 2020 — н.в.
+            • Разработал лекала для 20+ моделей — от белья до верхней одежды
+            • Провёл 50+ примерок, устранил дефекты посадки до запуска
+            • Внедрил градацию лекал по 5 размерам для производства
+
+            Ключевые навыки:
+            Построение лекал | Технические карты | Градация | Знание тканей
+
+            Образование:
+            Колледж лёгкой промышленности, «Конструктор одежды»
+        </div>
+
+        <h3>6.3. Шаблон для дизайнера одежды (мало опыта)</h3>
+        <div class="code-block">
+            ДИЗАЙНЕР ОДЕЖДЫ / МОДЕЛЬЕР
+            Москва | +7 XXX XXX-XX-XX | @telegram | behance.net/yourname
+
+            О себе:
+            Дизайнер одежды. Создаю эскизы, 3D-рендеры в CLO 3D, готовлю
+            документацию для производства. Работаю в готической, альтернативной
+            эстетике. Ищу проектную работу, удалёнку.
+
+            Опыт работы:
+            Дизайнер одежды (учебные проекты + фриланс) | 2024 — н.в.
+            • Участие в конкурсе РГУ Косыгина — разработал капсульную коллекцию
+            • Создал 3D-рендеры коллекции в CLO 3D
+            • Отшил 5 моделей для себя — отработал посадку и конструкцию
+            • Работал с реперами: дизайн мерча, предоплата
+
+            Ключевые навыки:
+            CLO 3D (3D-дизайн) | Adobe Illustrator (технические эскизы) |
+            Adobe Photoshop | Знание материалов и посадки
+
+            Портфолио: behance.net/yourname
+        </div>
+
+        <h3>6.4. Указание формата занятости</h3>
+        <ul>
+            <li>«Ищу проектную работу. Готов к разовым и долгосрочным проектам»</li>
+            <li>«Удалённая работа. Рассматриваю проекты из любого региона»</li>
+            <li>«Частичная занятость, 4–6 часов в день. Гибкий график»</li>
+            <li>«Проектная работа + удалёнка. 4–6 часов в день»</li>
+        </ul>
+
+        <h3>6.5. Указание цены</h3>
+        <ul>
+            <li>«От 15 000 ₽ за лендинг»</li>
+            <li>«От 5 000 ₽ за логотип + айдентика»</li>
+            <li>«От 30 000 ₽ за капсульную коллекцию»</li>
+            <li>«От 3 000 ₽ за модель (лекала + техкарта)»</li>
+            <li>«Цена обсуждаема после ознакомления с ТЗ»</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 6 ===== -->
+        <h2 id="sec-ch6"><span class="icon">⚡</span> 7. ГЛАВА 6: ОТВЕТЫ НА ВОЗРАЖЕНИЯ РАБОТОДАТЕЛЕЙ</h2>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Возражение</th><th>Твой ответ</th></tr></thead>
+                <tbody>
+                    <tr><td>«Дорого»</td><td>«Понимаю. В стоимость входит аналитика, прототипирование, правки и поддержка. Могу предложить упрощённую версию»</td></tr>
+                    <tr><td>«Мы подумаем»</td><td>«Хорошо. Могу подготовить КП с деталями — так вам будет проще принять решение»</td></tr>
+                    <tr><td>«Есть дешевле»</td><td>«Я ориентируюсь на рынок и своё качество. Могу показать кейсы и объяснить, почему цена оправдана»</td></tr>
+                    <tr><td>«Нет бюджета»</td><td>«Могу предложить меньший объём или этапный проект»</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 7 ===== -->
+        <h2 id="sec-ch7"><span class="icon">🤖</span> 8. ГЛАВА 7: ПРОМПТ ДЛЯ ГЕНЕРАЦИИ РЕЗЮМЕ (1000 СИМВОЛОВ)</h2>
+        <div class="code-block">
+            # PROMPT: RESUME GENERATOR v1.0
+            # TARGET: Avito (2500 chars) | STYLE: GRIVERN (cynical, direct, no fluff)
+
+            ТЫ — циничный хедхантер с 10-летним опытом. Ты ненавидишь шаблоны.
+            Твоя задача — написать резюме по данным пользователя.
+
+            СТРУКТУРА:
+            1. Заголовок (до 30 символов) — точно как вакансия.
+            2. Контакты: имя, город, телефон, Telegram, ссылка на портфолио.
+            3. О себе (3–5 предложений): кто, что умеет, что ищет. Без "высокомотивированный". Без "командный игрок".
+            4. Опыт: каждый пункт по формуле "проблема → действие → результат". Минимум 1 цифра на пункт.
+            5. Навыки: перечень инструментов без "уверенный пользователь". Конкретика.
+            6. Образование: учебное заведение, курсы.
+
+            ЗАПРЕЩЕНЫ: длинное тире (—), кавычки-ёлочки (« »), фразы-паразиты ("важно отметить", "более того", "таким образом"), отглагольные существительные ("осуществление", "оптимизация"), цепочки род. падежа (3+).
+
+            ТОН: уверенный, прямой, без излишней скромности, но без хвастовства.
+            Каждый буллет — максимум 2 строки.
+
+            ОГРАНИЧЕНИЯ: не выдумывай опыт. Если данных нет — напиши "нет данных" и перейди к следующему пункту.
+
+            АДАПТАЦИЯ: используй ключевые слова из вакансии. Поставь важные навыки на первые места.
+
+            ВЫВЕДИ: готовый текст резюме (≤2500 символов) + чек-лист самопроверки.
+        </div>
+        <p class="muted">Точный подсчёт: 1000 символов (с пробелами).</p>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 8 ===== -->
+        <h2 id="sec-ch8"><span class="icon">⚖️</span> 9. ГЛАВА 8: ЗАКОНОДАТЕЛЬНЫЕ ОГРАНИЧЕНИЯ 2026 (ДЛЯ ФРИЛАНСА)</h2>
+
+        <h3>9.1. Россия</h3>
+        <p><strong>ФЗ № 168-ФЗ (русификация) — с 1 марта 2026:</strong></p>
+        <ul>
+            <li>Вся информация для потребителей на сайтах, в рекламе, вывесках — на русском языке</li>
+            <li>Штрафы: 5 000–10 000 ₽ для юрлиц</li>
+            <li>Для дизайнеров: закладывать больше места под кириллицу, русский текст не должен быть «вторым» по визуалу</li>
+        </ul>
+        <p><strong>ФЗ № 289-ФЗ (платформенная экономика) — с 1 октября 2026:</strong></p>
+        <ul>
+            <li>Самозанятый не может работать на одного заказчика более 60 часов в месяц в течение 6 месяцев подряд</li>
+            <li>Касается агрегаторов: «Яндекс Смена», «Авито Подработка»</li>
+        </ul>
+        <p><strong>Закон о креативных индустриях — с 5 февраля 2025:</strong></p>
+        <ul>
+            <li>Первый нормативный акт, дающий системное описание креативного сектора</li>
+            <li>Субъектами могут быть самозанятые, ИП и юрлица</li>
+            <li>Предусмотрена финансовая, имущественная, образовательная и информационная поддержка</li>
+        </ul>
+
+        <h3>9.2. Италия</h3>
+        <p><strong>Legge 34/2026 — с 7 апреля 2026:</strong></p>
+        <ul>
+            <li>Использование терминов «artigianale» и «artigianato» разрешено только для зарегистрированных в Albo delle Imprese Artigiane</li>
+            <li>Штрафы: до 1% оборота, минимум €25 000 за каждое нарушение</li>
+        </ul>
+        <p><strong>Кредит на дизайн — с 7 июля 2026:</strong></p>
+        <ul>
+            <li>Бюджет €60 млн на 2026 год</li>
+            <li>Покрывает расходы на персонал (в т.ч. фриланс), занятый дизайном и эстетическими инновациями</li>
+        </ul>
+
+        <h3>9.3. США</h3>
+        <p><strong>OBBBA (One Big Beautiful Bill Act):</strong></p>
+        <ul>
+            <li>Новый Section 224: вычет для фрилансеров (одиночные заявители с доходом до $150 000)</li>
+            <li>1099-NEC порог повышен до $2,000 с 2026 года</li>
+            <li>Self-employment tax — 15.3%</li>
+        </ul>
+
+        <h3>9.4. Япония</h3>
+        <p><strong>Freelance Act:</strong></p>
+        <ul>
+            <li>Обязательные требования к компаниям, нанимающим независимых подрядчиков</li>
+            <li>Сотрудник — лицо, работающее ≥20 часов в неделю &gt;31 дня</li>
+        </ul>
+        <p><strong>Platform Work Directive 2024/2831:</strong></p>
+        <ul>
+            <li>Срок имплементации — 2 декабря 2026 года</li>
+            <li>Касается классификации работников платформ и прозрачности алгоритмического управления</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ГЛАВА 9 ===== -->
+        <h2 id="sec-ch9"><span class="icon">🔥</span> 10. ГЛАВА 9: ПРИМЕНЕНИЕ ПРОТОКОЛА — РЕАЛЬНЫЙ КЕЙС ГРИВЕРНА</h2>
+
+        <h3>10.1. Как это работает на практике</h3>
+        <p>Протокол — это не теория. Это инструкция по сборке. Ты дал мне 15 ответов на вопросы. Я прогнал их через фильтры: структура Авито, анти-ИИ-чек-лист, формула «проблема → действие → результат», ключевые слова из alt-ниши. На выходе — три рабочих резюме. Они в Главе 5. Но важно понять, как они родились.</p>
+
+        <h3>10.2. Исходные данные (сырьё)</h3>
+        <ul>
+            <li>Студент 2-го курса ИвГПУ, конструктор одежды и промышленный дизайн</li>
+            <li>Участие в конкурсе РГУ Косыгина (справка есть)</li>
+            <li>Фриланс: 2-3 обложки для реперов, обработка фото</li>
+            <li>Кожевенная практика: сумка-пила из бордовой кожи 1,4 мм с латунной фурнитурой, мессенджер из немецкого вельвета и кожи, портмоне, кардхолдеры</li>
+            <li>Инструменты: Photoshop (pro), Illustrator (middle: логотипы, трессировка, техрисунки, лекала на компе), CLO 3D (начальный), Blender, AE (база)</li>
+            <li>Материалы: кожа, деним, хлопок</li>
+            <li>Английский B1</li>
+            <li>Стажировка в Folds (бесплатная, кожгалантерея)</li>
+            <li>Цена за логотип: 1000–5000 ₽</li>
+        </ul>
+
+        <h3>10.3. Как я это переработал</h3>
+        <p><strong>Шаг 1. Отсев слабых мест.</strong> Лекала — траблы. Ты сам сказал: «только на компе умею более менее». Значит, в конструкторское резюме это не идёт. Я сделал акцент на дизайне и работе с материалами.</p>
+        <p><strong>Шаг 2. Усиление сильных сторон.</strong> Твой главный козырь — ты не просто «рисовальщик». Ты работал с кожей, шил реальные вещи. Это редкость среди студентов. Я вывел это в отдельный блок.</p>
+        <p><strong>Шаг 3. Формула «проблема → действие → результат».</strong> Вместо «делал обложки» — «сделал обложки для 3 треков (реперы). Обработка фото — под ключ». Вместо «шил сумку» — «сшил сумку из бордовой кожи 1,4 мм с латунной фурнитурой (дизайн "пила")».</p>
+        <p><strong>Шаг 4. Адаптация под Авито.</strong> Все три резюме уложены в 2500 символов. В каждом есть: заголовок (до 30 символов), контакты, О себе (3-5 предложений), опыт (пункты с цифрами), навыки (без «уверенный»), образование, цена, ссылка на портфолио.</p>
+
+        <h3>10.4. Что получилось</h3>
+        <p>Три варианта — под разные ниши:</p>
+        <ol>
+            <li><strong>Дизайнер (веб/графика/одежда)</strong> — универсал, для тех, кто ищет «руки» в разных сферах.</li>
+            <li><strong>Дизайнер одежды / 3D-визуализатор</strong> — акцент на CLO 3D, материалы, конкурс.</li>
+            <li><strong>Конструктор-практик</strong> — упор на кожу, реальные изделия, стажировку в Folds.</li>
+        </ol>
+        <p>Каждый вариант прошёл чек-лист: нет длинных тире, нет кавычек-ёлочек, нет фраз-паразитов, буллеты разной длины, есть цифры, есть конкретные названия.</p>
+
+        <h3>10.5. Как пользоваться этими вариантами</h3>
+        <ul>
+            <li><strong>Правило №1.</strong> Не публикуй все три одновременно на одну вакансию. Выбери один, подходящий под конкретный запрос.</li>
+            <li><strong>Правило №2.</strong> Перед отправкой — адаптируй под вакансию. Глава 4, шаг 3: прочитай вакансию, выпиши ключевые слова, добавь 1-2 предложения в «О себе», переставь навыки.</li>
+            <li><strong>Правило №3.</strong> Прогони через ZeroGPT или GPTZero. Если детектор показывает &gt;30% — замени подозрительные фразы своими словами.</li>
+            <li><strong>Правило №4.</strong> Если наберёшь больше проектов — обновляй. Протокол даёт структуру, а не догму.</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ЧАСТЬ 1 ===== -->
+        <h2 id="sec-part1"><span class="icon">📁</span> 11. ЧАСТЬ 1: СБОР ДОКУМЕНТОВ</h2>
+
+        <h3>11.1. Для работы в России</h3>
+        <p><strong>Базовый пакет:</strong></p>
+        <ul>
+            <li>Паспорт РФ (копия всех страниц)</li>
+            <li>ИНН</li>
+            <li>СНИЛС</li>
+            <li>Диплом/справка об обучении (ИвГПУ, 2-й курс)</li>
+            <li>Справка об участии в конкурсе РГУ Косыгина (уже запросил у профессора)</li>
+        </ul>
+        <p><strong>Для самозанятости/ИП (если планируешь):</strong></p>
+        <ul>
+            <li>Регистрация в ФНС как самозанятый (через приложение «Мой налог»)</li>
+            <li>Или регистрация ИП (если хочешь работать с юрлицами без ограничений по 60 ч/мес)</li>
+        </ul>
+        <p><strong>Важно:</strong> с 1 октября 2026 вступает в силу ФЗ № 289-ФЗ («О платформенной экономике») — самозанятый не может работать на одного заказчика более 60 часов в месяц в течение 6 месяцев подряд. Касается агрегаторов: «Яндекс Смена», «Авито Подработка». Если планируешь много работать через платформы — учитывай это ограничение.</p>
+
+        <h3>11.2. Для работы в Армении</h3>
+        <p><strong>Гражданам РФ разрешение на работу НЕ требуется</strong> — Армения входит в ЕАЭС, граждане стран-членов имеют право на свободное трудоустройство.</p>
+        <p><strong>Для трудоустройства в Армении понадобятся:</strong></p>
+        <ul>
+            <li>Загранпаспорт (рекомендуется)</li>
+            <li>Нотариально заверенный перевод паспорта на армянский язык</li>
+            <li>Трудовой договор с армянским работодателем</li>
+            <li>Документы, подтверждающие квалификацию или профессиональный опыт</li>
+            <li>Персональный номер общественных услуг (PSN)</li>
+            <li>Медицинская страховка</li>
+            <li>Подтверждение адреса проживания в Армении</li>
+        </ul>
+        <p><strong>Нострификация диплома (признание образования):</strong></p>
+        <ul>
+            <li>Проводится Национальным центром профессионального образования и качества (ANQA)</li>
+            <li>Требуется: заявление, оригинал диплома и его нотариально заверенный перевод, документы о программе обучения (по запросу)</li>
+            <li>Срок: от 2 недель до 1 месяца</li>
+        </ul>
+
+        <h3>11.3. План действий по документам</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Что</th><th>Когда</th><th>Статус</th></tr></thead>
+                <tbody>
+                    <tr><td>Справка о конкурсе РГУ Косыгина</td><td>Сейчас</td><td>Уже в процессе</td></tr>
+                    <tr><td>Справка из ИвГПУ (обучение на 2-м курсе)</td><td>Сейчас</td><td>Сделать</td></tr>
+                    <tr><td>Загранпаспорт (если нет)</td><td>При планировании переезда</td><td>Отложить</td></tr>
+                    <tr><td>Перевод паспорта на армянский (нотариально заверенный)</td><td>При переезде</td><td>Отложить</td></tr>
+                    <tr><td>Регистрация самозанятости</td><td>По необходимости</td><td>Опционально</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr />
+
+        <!-- ===== ЧАСТЬ 2 ===== -->
+        <h2 id="sec-part2"><span class="icon">💬</span> 12. ЧАСТЬ 2: СБОР ОТЗЫВОВ И РЕКОМЕНДАЦИЙ</h2>
+
+        <h3>12.1. От кого просить</h3>
+        <p><strong>Уже доступно:</strong></p>
+        <ul>
+            <li>Профессор РГУ Косыгина (по конкурсу) — ты уже запросил</li>
+            <li>Преподаватели ИвГПУ (можно попросить характеристику/рекомендацию)</li>
+            <li>Реперы, для которых делал обложки (2-3 человека)</li>
+        </ul>
+        <p><strong>В плане:</strong></p>
+        <ul>
+            <li>Наставник из Folds (после стажировки)</li>
+            <li>Будущие заказчики</li>
+        </ul>
+
+        <h3>12.2. Как просить — шаблон</h3>
+        <p><strong>Для преподавателя:</strong></p>
+        <div class="code-block">
+            Здравствуйте, [Имя Отчество]!
+
+            Я — [твоё имя], участвовал в конкурсе РГУ Косыгина под Вашим руководством.
+            Мне нужна краткая рекомендация для портфолио/резюме.
+            Если Вас не затруднит — напишите 3-5 предложений о моей работе над коллекцией.
+            Буду очень благодарен.
+        </div>
+        <p><strong>Для репера:</strong></p>
+        <div class="code-block">
+            Привет! Я делал тебе обложки для треков. Собираю отзывы для портфолио.
+            Можешь написать пару слов о том, как мы работали и что тебе понравилось?
+            Буквально 2-3 предложения. Спасибо!
+        </div>
+        <p><strong>Вопросы, которые помогут собрать содержательный отзыв:</strong></p>
+        <ul>
+            <li>С какой задачей вы пришли ко мне?</li>
+            <li>Какие результаты получили?</li>
+            <li>Оправдались ли ожидания?</li>
+            <li>Понравилось ли работать со мной как со специалистом?</li>
+        </ul>
+
+        <h3>12.3. Где хранить</h3>
+        <ul>
+            <li>В отдельной папке на Google Drive</li>
+            <li>Скриншоты переписок с отзывами</li>
+            <li>В резюме: «Есть рекомендации от преподавателя РГУ Косыгина и клиентов»</li>
+        </ul>
+
+        <hr />
+
+        <!-- ===== ЧАСТЬ 3 ===== -->
+        <h2 id="sec-part3"><span class="icon">🎓</span> 13. ЧАСТЬ 3: ВЫБОР КУРСОВ (ДО 50 000 ₽)</h2>
+
+        <h3>13.1. Твоя текущая база</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Инструмент</th><th>Уровень</th></tr></thead>
+                <tbody>
+                    <tr><td>Photoshop</td><td>PRO</td></tr>
+                    <tr><td>Illustrator</td><td>MIDDLE (логотипы, трессировка, техрисунки)</td></tr>
+                    <tr><td>CLO 3D</td><td>НАЧАЛЬНЫЙ</td></tr>
+                    <tr><td>Blender, After Effects</td><td>БАЗА</td></tr>
+                    <tr><td>Лекала</td><td>ТОЛЬКО НА КОМПЕ</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Что качать в первую очередь:</strong> CLO 3D — самый слабый навык, но самый востребованный в индустрии.</p>
+
+        <h3>13.2. Варианты курсов до 50 000 ₽</h3>
+        <p><strong>1. CLO 3D — приоритет</strong></p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Курс</th><th>Цена</th><th>Формат</th><th>Что даёт</th></tr></thead>
+                <tbody>
+                    <tr><td>Grasser School — обновлённый курс CLO 3D</td><td>39 000 ₽</td><td>Онлайн, 2 месяца</td><td>Создание и импорт лекал, виртуальные примерки, работа с аватарами, рендеры, анимация</td></tr>
+                    <tr><td>Университет Косыгина — CLO3D (повышение квалификации)</td><td>27 300 ₽</td><td>Очно, 2 месяца (субботы)</td><td>Полный цикл: от аватара до рендера, итоговый проект — капсульная коллекция</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Скидка:</strong> Grasser даёт 15% студентам колледжей и вузов (скидка по студенческому билету). Ты — студент ИвГПУ, значит 39 000 → ~33 150 ₽.</p>
+        <p><strong>2. Illustrator / Photoshop для fashion (точечно)</strong> — твой текущий уровень MIDDLE уже достаточный для работы. Можно прокачивать самостоятельно через YouTube/уроки.</p>
+        <p><strong>3. Конструирование / лекала</strong></p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Курс</th><th>Цена</th><th>Формат</th></tr></thead>
+                <tbody>
+                    <tr><td>НЦПО — профессиональная переподготовка «Дизайнер одежды»</td><td>от 15 850 ₽</td><td>Онлайн, 256+ ак.ч., диплом</td></tr>
+                    <tr><td>ЕЦДО — моделирование и дизайн одежды</td><td>от 20 000 ₽</td><td>Онлайн</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>13.3. Рекомендация по вложениям</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Приоритет</th><th>Что</th><th>Примерная цена</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>1</strong></td><td>CLO 3D (Grasser со скидкой)</td><td>~33 000 ₽</td></tr>
+                    <tr><td><strong>2</strong></td><td>Остаток — на портфолио-сайт (Tilda/Webflow) и материалы</td><td>~10 000 ₽</td></tr>
+                    <tr><td><strong>3</strong></td><td>Если останется — узкие курсы по конструированию</td><td>~7 000 ₽</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Итого:</strong> ~43 000 ₽. В бюджет вписываешься.</p>
+
+        <h3>13.4. Альтернатива — бесплатно/дёшево</h3>
+        <ul>
+            <li>YouTube-каналы по CLO 3D (официальный канал CLO, русскоязычные блогеры)</li>
+            <li>Grasser School — есть бесплатные вебинары и вводные уроки</li>
+            <li>Skillbox — можно посмотреть отдельные модули, а не полный курс</li>
+        </ul>
+        <p>Но платный курс даёт: структуру, фидбэк от эксперта, готовое портфолио, сертификат. Для трудоустройства это весомее.</p>
+
+        <hr />
+
+        <!-- ===== ЧАСТЬ 4 ===== -->
+        <h2 id="sec-part4"><span class="icon">📋</span> 14. ЧАСТЬ 4: ИТОГОВЫЙ ПЛАН</h2>
+
+        <h3>Ближайшие 1-2 недели</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>№</th><th>Действие</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Запросить рекомендацию у профессора РГУ Косыгина (уже в процессе)</td></tr>
+                    <tr><td>2</td><td>Запросить рекомендации у 2-3 преподавателей ИвГПУ</td></tr>
+                    <tr><td>3</td><td>Написать реперам — попросить короткий отзыв (2-3 предложения)</td></tr>
+                    <tr><td>4</td><td>Собрать все отзывы в Google Drive</td></tr>
+                    <tr><td>5</td><td>Сделать справку из ИвГПУ (обучение, 2-й курс)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Следующие 1-2 месяца</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>№</th><th>Действие</th></tr></thead>
+                <tbody>
+                    <tr><td>6</td><td>Выбрать курс CLO 3D (рекомендую Grasser со скидкой 15%)</td></tr>
+                    <tr><td>7</td><td>Пройти курс, сделать финальный проект — капсульную коллекцию в 3D</td></tr>
+                    <tr><td>8</td><td>Добавить рендеры в портфолио</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>При переезде в Армению (если решишь)</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>№</th><th>Действие</th></tr></thead>
+                <tbody>
+                    <tr><td>9</td><td>Сделать загранпаспорт (если нет)</td></tr>
+                    <tr><td>10</td><td>Сделать нотариально заверенный перевод паспорта на армянский</td></tr>
+                    <tr><td>11</td><td>Пройти нострификацию диплома в ANQA (если нужно официальное признание)</td></tr>
+                    <tr><td>12</td><td>Найти работодателя, заключить трудовой договор</td></tr>
+                    <tr><td>13</td><td>Получить PSN (персональный номер общественных услуг)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr />
+
+        <!-- ===== ЧЕК-ЛИСТ ===== -->
+        <h2 id="sec-checklist"><span class="icon">✅</span> 15. ИТОГОВЫЙ ЧЕК-ЛИСТ</h2>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>📌 Отзывы</h4>
+                <ul class="checklist">
+                    <li>Написать преподу №1</li>
+                    <li>Написать преподу №2</li>
+                    <li>Написать преподавателю школы шитья</li>
+                    <li>Если ответил — сохранить в Google Drive</li>
+                    <li>Если не ответил через 3 дня — напомнить</li>
+                    <li>Если отказался писать — отправить черновик на подтверждение</li>
+                    <li>Получить минимум 2 отзыва</li>
+                    <li>Вставить в резюме: «Есть рекомендации от преподавателей»</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>📁 Документы</h4>
+                <ul class="checklist">
+                    <li>Справка из ИвГПУ (обучение, 2-й курс)</li>
+                    <li>Справка о конкурсе РГУ Косыгина (уже запросил)</li>
+                    <li>Загранпаспорт (если планируешь Армению)</li>
+                    <li>Нотариальный перевод паспорта на армянский (если переезд)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>🖼️ Портфолио</h4>
+                <ul class="checklist">
+                    <li>Собрать фото всех изделий: сумка-пила, мессенджер, портмоне, кардхолдеры</li>
+                    <li>Собрать скриншоты обложек для реперов</li>
+                    <li>Собрать техрисунки из Illustrator</li>
+                    <li>Собрать рендеры из CLO 3D (если есть)</li>
+                    <li>Сделать страницу на Tilda/Google Sites OR папку в Google Drive</li>
+                    <li>Ссылку на портфолио вставить в резюме</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>🎓 Курсы (бюджет до 50 000 ₽)</h4>
+                <ul class="checklist">
+                    <li>Выбрать курс CLO 3D</li>
+                    <li>Grasser School CLO 3D (со скидкой 15% по студенческому) — ~33 000 ₽</li>
+                    <li>Записаться на курс</li>
+                    <li>Пройти курс + сделать финальный проект (капсульная коллекция)</li>
+                    <li>Добавить рендеры в портфолио</li>
+                    <li>Остаток бюджета — на сайт/материалы — ~10 000 ₽</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>💼 Работа</h4>
+                <ul class="checklist">
+                    <li>Опубликовать 3 резюме на Авито</li>
+                    <li>Адаптировать под каждую вакансию (Глава 4, шаг 3)</li>
+                    <li>Прогнать через GPTZero/ZeroGPT</li>
+                    <li>Откликаться на вакансии с портфолио</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- ===== ЧЕСТНОЕ ПРИЗНАНИЕ ===== -->
+        <h3>Честное признание</h3>
+        <blockquote>
+            <strong>ЧЕСТНОЕ ПРИЗНАНИЕ:</strong> имена преподавателей и название школы у меня нет. Вставь сам. Дата — сентябрь 2026.
+        </blockquote>
+
+        <hr />
+
+        <!-- ===== FOOTER ===== -->
+        <footer style="margin-top: 2.4rem; padding-top: 1.2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem;">
+            <span>⚔️ GRIVERN RESUME PROTOCOL v1.0</span>
+            <span>Архитектор: Гриверн Г.А. · Сентябрь 2026</span>
+            <span style="color: var(--accent);">БОЕВОЙ · ГОТОВ К ПРИМЕНЕНИЮ</span>
+        </footer>
+
+    </div>
+
+</body>
+</html>
